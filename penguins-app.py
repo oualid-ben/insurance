@@ -5,7 +5,7 @@ import pickle
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Insurance fraud detection: IMAFA
+# Ansurance fraud detection: IMAFA
 
 This app predicts if a claim is a fraud or not
 
