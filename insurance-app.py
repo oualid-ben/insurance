@@ -7,7 +7,9 @@ from sklearn.ensemble import RandomForestClassifier
 st.write("""
 # Insurance fraud detection: IMAFA
 
-This app predicts if a claim is a fraud or not
+CEO: Gertaldi Espicier Aayar
+
+This app predicts if a claim is a fraud or not.
 
 Dataset [ins_cl_dataset](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
 """)
