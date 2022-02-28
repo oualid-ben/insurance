@@ -5,7 +5,7 @@ import pickle
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Ensurance fraud detection: IMAFA
+# RAnsurance fraud detection: IMAFA
 
 This app predicts if a claim is a fraud or not
 
@@ -27,7 +27,7 @@ else:
         model  = st.sidebar.selectbox('Model',('KNN','Tree decision'))
         number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
         witnesses = st.sidebar.slider('Witnesses', 0,3,1)
-        data = {'model': Model,
+        data = {'model': model,
                 'number_of_vehicles_involved': number_of_vehicles_involved,
                 'witnesses': witnesses,
                }
@@ -35,7 +35,11 @@ else:
         return features
     input_df = user_input_features()    
 
-df = input_df.drop(columns=['model'], axis=1)
+# Combines user input features with entire penguins dataset
+# This will be useful for the encoding phase
+insurance_raw = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data.csv')
+opt = input_df.drop(columns=['model'], axis=1)
+df = pd.concat([input_df,opt],axis=0)
 
 df = df[:1] # Selects only the first row (the user input data)
 
