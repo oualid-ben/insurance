@@ -9,13 +9,13 @@ st.write("""
 
 This app predicts if a claim is a fraud or not
 
-Data obtained from the [palmerpenguins library](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
+Dataset [ins_cl_dataset](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
 """)
 
 st.sidebar.header('User Input Features')
 
 st.sidebar.markdown("""
-[Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/penguins_example.csv)
+[Example CSV input file](https://raw.githubusercontent.com/oualid-ben/data/blob/main/ins_cl_dataset.csv)
 """)
 
 # Collects user input features into dataframe
