@@ -1,1 +1,1 @@
-web: gunicorn breast_cancer:app
+web: sh setup.sh && streamlit run penguins-app.py
