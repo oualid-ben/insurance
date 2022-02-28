@@ -26,7 +26,7 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN'))
+        model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
         number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
         witnesses = st.sidebar.slider('Witnesses', 0,3,1)
         data = {'model': model,
