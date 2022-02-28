@@ -9,7 +9,7 @@ st.write("""
 
 CEO: Gertaldi Espicier Aayar
 
-This app predicts if a claim is a fraud or not.
+This app predicts if a claim is a fraud or not !
 
 Dataset [ins_cl_dataset](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
 """)
