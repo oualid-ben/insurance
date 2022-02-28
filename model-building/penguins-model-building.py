@@ -1,26 +1,20 @@
 import pandas as pd
-penguins = pd.read_csv('https://github.com/dataprofessor/data/blob/master/penguins_cleaned.csv')
+insurance = pd.read_csv('https://github.com/oualid-ben/data/blob/main/clean_data_fraud.csv')
 
 # Ordinal feature encoding
 # https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
-df = penguins.copy()
-target = 'species'
-encode = ['sex','island']
+df = insurance.copy()
+target = 'fraud_reported'
 
-for col in encode:
-    dummy = pd.get_dummies(df[col], prefix=col)
-    df = pd.concat([df,dummy], axis=1)
-    del df[col]
-
-target_mapper = {'Adelie':0, 'Chinstrap':1, 'Gentoo':2}
+target_mapper = {'Pas de fraud':0, 'Fraude':1}
 def target_encode(val):
     return target_mapper[val]
 
 df['species'] = df['species'].apply(target_encode)
 
 # Separating X and y
-X = df.drop('species', axis=1)
-Y = df['species']
+X = df.drop('fraud_reported', axis=1)
+Y = df['fraud_reported']
 
 # Build random forest model
 from sklearn.ensemble import RandomForestClassifier
@@ -29,4 +23,4 @@ clf.fit(X, Y)
 
 # Saving the model
 import pickle
-pickle.dump(clf, open('penguins_clf.pkl', 'wb'))
+pickle.dump(clf, open('insurance_clf.pkl', 'wb'))
