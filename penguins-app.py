@@ -9,7 +9,7 @@ st.write("""
 
 This app predicts if a claim is a fraud or not
 
-Data obtained from the [palmerpenguins library](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv) in R by Allison Horst.
+Data obtained from the [palmerpenguins library](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
 """)
 
 st.sidebar.header('User Input Features')
