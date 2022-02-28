@@ -5,9 +5,11 @@ import pickle
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Insurance fraud detection: IMAFA POLYTECH 2022
+# Penguin Prediction App
 
-Database used: (https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv) .
+This app predicts the **Palmer Penguin** species!
+
+Data obtained from the [palmerpenguins library](https://github.com/allisonhorst/palmerpenguins) in R by Allison Horst.
 """)
 
 st.sidebar.header('User Input Features')
