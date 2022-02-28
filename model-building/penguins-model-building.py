@@ -11,12 +11,12 @@ X = df.drop('fraud_reported', axis=1)
 Y = df['fraud_reported']
 
 # Build random forest model
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
-clf = RandomForestClassifier()
-clf.fit(X, Y)
+knn = KNeighborsClassifier(n_neighbors = 30)
+knn.fit(X, Y)
 
 # Saving the model
 
 import pickle
-pickle.dump(clf, open('insurance.pkl', 'wb'))
+pickle.dump(knn, open('insurance.pkl', 'wb'))
