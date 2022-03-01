@@ -28,9 +28,10 @@ else:
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
         policy_annual_premium  = st.number_input('policy annual premium ', 2047.59,433.33,700.33)
-        #number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
+        number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
         witnesses = st.sidebar.slider('Witnesses', 0,3,1)
         data = {'model': model,
+                'policy_annual_premium': policy_annual_premium,
                 'number_of_vehicles_involved': number_of_vehicles_involved,
                 'witnesses': witnesses,
                }
