@@ -27,16 +27,16 @@ if uploaded_file is not None:
 else:
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
-        policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 700.33)
+        policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
-        capital_gains  = st.sidebar.number_input('capital gains ', 0, 100500, 700)
-        capital_loss  = st.sidebar.number_input('capital loss ', -111100, 0, -333)
-        incident_severity  = st.sidebar.number_input('incident severity ', 0, 3, 2)
-        incident_hour_of_the_day  = st.sidebar.number_input('incident hour of the day ', 0, 23, 4)
-        number_of_vehicles_involved  = st.sidebar.number_input('number of vehicles involved ', 1,4,2)
+        capital_gains  = st.sidebar.number_input('capital gains ', 0, 100500, 53300)
+        capital_loss  = st.sidebar.number_input('capital loss ', -111100, 0, 0)
+        incident_severity  = st.sidebar.number_input('incident severity ', 0, 3, 1)
+        incident_hour_of_the_day  = st.sidebar.number_input('incident hour of the day ', 0, 23, 5)
+        number_of_vehicles_involved  = st.sidebar.number_input('number of vehicles involved ', 1,4,1)
         bodily_injuries  = st.sidebar.number_input('bodily injuries ', 0, 2, 1)
-        property_claim  = st.sidebar.number_input('property claim ', 0, 23670, 1000)
+        property_claim  = st.sidebar.number_input('property claim ', 0, 23670, 13020)
 
         data = {'model': model,
                 'policy_annual_premium': policy_annual_premium,
