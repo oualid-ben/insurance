@@ -34,3 +34,18 @@ logreg.fit(X_train, y_train)
 
 # Saving the model
 pickle.dump(logreg, open('insurance_log.pkl', 'wb'))
+
+
+#building decision tree
+# Separating X and y
+X = df.drop('fraud_reported', axis=1)
+y = df['fraud_reported']
+dtc = DecisionTreeClassifier()
+grid_params = {'criterion': ['gini', 'entropy'],'max_depth': [3, 5, 7, 10],'min_samples_split': range(2, 10, 1),'min_samples_leaf': range(2, 10, 1)}
+X_train, X_test, Y_train, Y_test = train_test_split(X, y, train_size=0.25,random_state= 0)
+
+grid_search = GridSearchCV(dtc, grid_params, cv=5, n_jobs=-1, verbose=1)
+grid_search.fit(X_train, Y_train)
+be = grid_search.best_estimator_
+
+pickle.dump(be, open('insurance_tree_1.pkl', 'wb'))
