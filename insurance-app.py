@@ -78,12 +78,14 @@ else:
 input_df['model'].iat[0]
 if input_df['model'].iat[0]=='KNN':
     load_clf = pickle.load(open('insurance.pkl', 'rb'))
+    # Apply model to make predictions
+    prediction = load_clf.predict(df)
+    prediction_proba = load_clf.predict_proba(df)
 else:
-    load_clf = pickle.load(open('insurance_tree.pkl', 'rb'))
-
-# Apply model to make predictions
-prediction = load_clf.predict(df)
-prediction_proba = load_clf.predict_proba(df)
+    load_clf_tree = pickle.load(open('insurance_tree.pkl', 'rb'))
+    # Apply model to make predictions
+    prediction = load_clf.predict(df)
+    prediction_proba = load_clf.predict_proba(df)
 
 
 st.subheader('Prediction')
