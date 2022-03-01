@@ -25,3 +25,13 @@ knn.fit(X_train, y_train)
 # Saving the model
 import pickle
 pickle.dump(knn, open('insurance.pkl', 'wb'))
+
+from sklearn.tree import DecisionTreeClassifier
+# Build Decision tree model
+dtc = DecisionTreeClassifier()
+dtc.fit(X_train, y_train)
+
+
+# Saving the model
+pickle.dump(dtc, open('insurance_tree.pkl', 'wb'))
+
