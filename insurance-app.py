@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
 
 st.write("""
 # Insurance fraud detection: IMAFA
