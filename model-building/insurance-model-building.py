@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 
 insurance = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv', on_bad_lines='skip')
 
@@ -15,7 +17,7 @@ Y = df['fraud_reported']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25)
         
         
-# Build random forest model
+# Build KNN
 from sklearn.neighbors import KNeighborsClassifier
 
 knn = KNeighborsClassifier(n_neighbors = 3)
@@ -26,12 +28,9 @@ knn.fit(X_train, y_train)
 import pickle
 pickle.dump(knn, open('insurance.pkl', 'wb'))
 
-"""
-from sklearn.ensemble import RandomForestClassifier
-# Build random forest model
-clf = RandomForestClassifier()
-clf.fit(X, Y)
+# Build log model
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
 
 # Saving the model
-pickle.dump(clf, open('insurance_forest.pkl', 'wb'))
-"""
+pickle.dump(logreg, open('insurance_log.pkl', 'wb'))

@@ -28,7 +28,7 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN', 'Log'))
+        model  = st.sidebar.selectbox('Model',('KNN', 'Logistic regression'))
         policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
