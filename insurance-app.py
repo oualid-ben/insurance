@@ -73,12 +73,25 @@ else:
     st.write('Awaiting CSV file to be uploaded. Currently using example input parameters (shown below).')
     st.write(df)
 
-# Reads in saved classification model
-load_clf = pickle.load(open('insurance_tree.pkl', 'rb'))
-
-# Apply model to make predictions
-prediction = load_clf.predict(df)
-prediction_proba = load_clf.predict_proba(df)
+if input_df['model'].iat[0]=='KNN':    
+    # Reads in saved classification model
+    load_clf = pickle.load(open('insurance.pkl', 'rb'))
+    # Apply model to make predictions
+    prediction = load_clf.predict(df)
+    prediction_proba = load_clf.predict_proba(df)
+else:
+    data = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv')
+    d = {'Minor Damage': 0, 'Major Damage': 1, 'Total Loss': 2, 'Trivial Damage': 3}
+    data['incident_severity'] = data['incident_severity'].replace(d)
+    d_ = {'N': 0, 'Y': 1}
+    data['fraud_reported'] = data['fraud_reported'].replace(d_)
+    X = data.drop('fraud_reported', axis=1)
+    y = data['fraud_reported']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
+    dtc = DecisionTreeClassifier()
+    dtc.fit(X_train, y_train)
+    prediction = dtc.predict(df)
+    prediction_proba= dtc.predict_proba(df)
 
 
 st.subheader('Prediction')
