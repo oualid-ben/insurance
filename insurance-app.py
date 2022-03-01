@@ -11,7 +11,7 @@ CEO: Gertaldi Negre Aayar Espicier
 
 This app predicts if a claim is a fraud or not !
 
-[Notebook](https://colab.research.google.com/drive/1w2xC6w6CkbCVCrsTrxsHQffDtwLzGWkS).
+[Notebook](https://colab.research.google.com/drive/1w2xC6w6CkbCVCrsTrxsHQffDtwLzGWkS)
 
 
 Dataset used: [ins_cl_dataset](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
