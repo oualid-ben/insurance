@@ -26,12 +26,11 @@ knn.fit(X_train, y_train)
 import pickle
 pickle.dump(knn, open('insurance.pkl', 'wb'))
 
-from sklearn.tree import DecisionTreeClassifier
-# Build Decision tree model
-dtc = DecisionTreeClassifier()
-dtc.fit(X_train, y_train)
-
+from sklearn.ensemble import RandomForestClassifier
+# Build random forest model
+clf = RandomForestClassifier()
+clf.fit(X, Y)
 
 # Saving the model
-pickle.dump(dtc, open('insurance_tree.pkl', 'wb'))
+pickle.dump(clf, open('insurance_forest.pkl', 'wb'))
 
