@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 st.write("""
 # Insurance fraud detection: IMAFA
 
-CEO: Gertaldi Espicier Aayar
+CEO: Gertaldi Negre Aayar
 
 This app predicts if a claim is a fraud or not !
 
