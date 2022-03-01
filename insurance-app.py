@@ -29,7 +29,7 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
+        model  = st.sidebar.selectbox('Model',('KNN', 'SVN'))
         policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
@@ -75,7 +75,11 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-load_clf = pickle.load(open('insurance.pkl', 'rb'))
+input_df['model'].iat[0]
+if input_df['model'].iat[0]=='KNN':
+    load_clf = pickle.load(open('insurance.pkl', 'rb'))
+else:
+    load_clf = pickle.load(open('insurance_svm.pkl', 'rb'))
 
 # Apply model to make predictions
 prediction = load_clf.predict(df)
