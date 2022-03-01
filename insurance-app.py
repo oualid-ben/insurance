@@ -75,22 +75,23 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-input_df['model'].iat[0]
+insurance_species = np.array(['No fraud','Yes, fraud'])
+
 if input_df['model'].iat[0]=='KNN':
     load_clf = pickle.load(open('insurance.pkl', 'rb'))
     # Apply model to make predictions
     prediction = load_clf.predict(df)
     prediction_proba = load_clf.predict_proba(df)
+    st.subheader('Prediction')
+    st.write(insurance_species[prediction.item(0)])
+    st.subheader('Prediction Probability')
+    st.write(prediction_proba)
 else:
     load_clf_tree = pickle.load(open('insurance_tree.pkl', 'rb'))
     # Apply model to make predictions
-    prediction = load_clf_tree.predict(df)
-    prediction_proba = load_clf_tree.predict_proba(df)
-
-
-st.subheader('Prediction')
-insurance_species = np.array(['No fraud','Yes, fraud'])
-st.write(insurance_species[prediction.item(0)])
-
-st.subheader('Prediction Probability')
-st.write(prediction_proba)
+    predictionT = load_clf_tree.predict(df)
+    prediction_probaT = load_clf_tree.predict_proba(df)
+    st.subheader('Prediction')
+    st.write(insurance_species[predictionT.item(0)])
+    st.subheader('Prediction Probability')
+    st.write(prediction_probaT)
