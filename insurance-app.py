@@ -75,7 +75,6 @@ else:
     st.write(df)
 
 # Reads in saved classification model
-# Reads in saved classification model
 load_clf = pickle.load(open('insurance.pkl', 'rb'))
 
 # Apply model to make predictions
@@ -84,8 +83,8 @@ prediction_proba = load_clf.predict_proba(df)
 
 
 st.subheader('Prediction')
-insurance_species = np.array(['Yes','No'])
-st.write(insurance_species[prediction])
+insurance_species = np.array(['No fraud','Yes, fraud'])
+st.write(insurance_species[prediction.item(0)])
 
 st.subheader('Prediction Probability')
 st.write(prediction_proba)
