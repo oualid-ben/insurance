@@ -74,7 +74,7 @@ else:
     st.write('Awaiting CSV file to be uploaded. Currently using example input parameters (shown below).')
     st.write(df)
     
-insurance = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv', on_bad_lines='skip')
+insurance = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv')
 df = insurance.copy()
 X = df.drop('fraud_reported', axis=1)
 Y = df['fraud_reported']
