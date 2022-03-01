@@ -27,7 +27,7 @@ if uploaded_file is not None:
 else:
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
-        policy_annual_premium  = st.number_input('policy annual premium ', 433.33, 2047.59, 700.33)
+        policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 700.33)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
         capital_gains  = st.sidebar.number_input('capital gains ', 0, 100500, 700)
