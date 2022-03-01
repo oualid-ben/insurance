@@ -25,6 +25,7 @@ uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["cs
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
+    st.sidebar.write('Or add add manually the inputs')
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
         policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
