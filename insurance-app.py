@@ -28,7 +28,7 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN', 'RandomForest'))
+        model  = st.sidebar.selectbox('Model',('KNN', 'Log'))
         policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
@@ -76,23 +76,13 @@ else:
 if input_df['model'].iat[0]=='KNN':    
     # Reads in saved classification model
     load_clf = pickle.load(open('insurance.pkl', 'rb'))
-    # Apply model to make predictions
-    prediction = load_clf.predict(df)
-    prediction_proba = load_clf.predict_proba(df)
 else:
-    datas = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv')
-    d = {'Minor Damage': 0, 'Major Damage': 1, 'Total Loss': 2, 'Trivial Damage': 3}
-    datas['incident_severity'] = datas['incident_severity'].replace(d)
-    d_ = {'N': 0, 'Y': 1}
-    datas['fraud_reported'] = datas['fraud_reported'].replace(d_)
-    X = datas.drop('fraud_reported', axis=1)
-    y = datas['fraud_reported']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
-    dtc = DecisionTreeClassifier()
-    dtc.fit(X_train, y_train)
-    prediction = dtc.predict(df)
-    prediction_proba= dtc.predict_proba(df)
+    load_clf = pickle.load(open('insurance_log.pkl', 'rb'))
 
+
+# Apply model to make predictions
+prediction = load_clf.predict(df)
+prediction_proba = load_clf.predict_proba(df)
 
 st.subheader('Prediction')
 insurance_species = np.array(['No fraud','Yes, fraud'])
