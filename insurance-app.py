@@ -80,13 +80,13 @@ if input_df['model'].iat[0]=='KNN':
     prediction = load_clf.predict(df)
     prediction_proba = load_clf.predict_proba(df)
 else:
-    data = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv')
+    datas = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv')
     d = {'Minor Damage': 0, 'Major Damage': 1, 'Total Loss': 2, 'Trivial Damage': 3}
-    data['incident_severity'] = data['incident_severity'].replace(d)
+    datas['incident_severity'] = datas['incident_severity'].replace(d)
     d_ = {'N': 0, 'Y': 1}
-    data['fraud_reported'] = data['fraud_reported'].replace(d_)
-    X = data.drop('fraud_reported', axis=1)
-    y = data['fraud_reported']
+    datas['fraud_reported'] = datas['fraud_reported'].replace(d_)
+    X = datas.drop('fraud_reported', axis=1)
+    y = datas['fraud_reported']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
     dtc = DecisionTreeClassifier()
     dtc.fit(X_train, y_train)
