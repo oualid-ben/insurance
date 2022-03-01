@@ -26,6 +26,7 @@ knn.fit(X_train, y_train)
 import pickle
 pickle.dump(knn, open('insurance.pkl', 'wb'))
 
+"""
 from sklearn.ensemble import RandomForestClassifier
 # Build random forest model
 clf = RandomForestClassifier()
@@ -33,4 +34,4 @@ clf.fit(X, Y)
 
 # Saving the model
 pickle.dump(clf, open('insurance_forest.pkl', 'wb'))
-
+"""
