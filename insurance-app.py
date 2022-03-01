@@ -28,12 +28,27 @@ else:
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
         policy_annual_premium  = st.number_input('policy annual premium ', 433.33, 2047.59, 700.33)
-        number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
-        witnesses = st.sidebar.slider('Witnesses', 0,3,1)
+        
+        umbrella_limit  = st.number_input('umbrella limit ', -1000000, 10000000, 0)
+        capital-gains  = st.number_input('capital gains ', 0, 100500, 700)
+        capital-loss  = st.number_input('capital loss ', -111100, 0, -333)
+        incident_severity  = st.number_input('incident severity ', 0, 3, 2)
+        incident_hour_of_the_day  = st.number_input('incident hour of the day ', 0, 23, 4)
+        number_of_vehicles_involved  = st.number_input('number of vehicles involved ', 1,4,2)
+        bodily_injuries  = st.number_input('bodily injuries ', 0, 2, 1)
+        property_claim  = st.number_input('property claim ', 0, 23670, 1000)
+
         data = {'model': model,
                 'policy_annual_premium': policy_annual_premium,
+                
+                'umbrella_limit': umbrella_limit,
+                'capital-gains': capital-gains,
+                'capital-loss': capital-loss,
+                'incident_severity': incident_severity,
+                'incident_hour_of_the_day': incident_hour_of_the_day,
                 'number_of_vehicles_involved': number_of_vehicles_involved,
-                'witnesses': witnesses,
+                'bodily_injuries': bodily_injuries,
+                'property_claim': property_claim,
                }
         features = pd.DataFrame(data, index=[0])
         return features
