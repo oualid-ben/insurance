@@ -42,8 +42,8 @@ else:
                 'policy_annual_premium': policy_annual_premium,
                 
                 'umbrella_limit': umbrella_limit,
-                'capital_gains': capital-gains,
-                'capital_loss': capital-loss,
+                'capital_gains': capital_gains,
+                'capital_loss': capital_loss,
                 'incident_severity': incident_severity,
                 'incident_hour_of_the_day': incident_hour_of_the_day,
                 'number_of_vehicles_involved': number_of_vehicles_involved,
