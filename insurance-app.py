@@ -28,7 +28,7 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN', 'Logistic regression','Tree'))
+        model  = st.sidebar.selectbox('Model',('KNN', 'Logistic regression','SVC','Tree'))
         policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1442.99)
         
         umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
@@ -78,6 +78,8 @@ if input_df['model'].iat[0]=='KNN':
     load_clf = pickle.load(open('insurance.pkl', 'rb'))
 elif input_df['model'].iat[0]=='Tree':
     load_clf = pickle.load(open('insurance_tree_1.pkl', 'rb'))
+elif input_df['model'].iat[0]=='SVC':
+    load_clf = pickle.load(open('insurance_svc.pkl', 'rb'))
 else:
     load_clf = pickle.load(open('insurance_log.pkl', 'rb'))
 
