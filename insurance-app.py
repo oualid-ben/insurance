@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 st.write("""
 # Insurance fraud detection: IMAFA
@@ -73,13 +73,24 @@ if uploaded_file is not None:
 else:
     st.write('Awaiting CSV file to be uploaded. Currently using example input parameters (shown below).')
     st.write(df)
+    
+insurance = pd.read_csv('https://raw.githubusercontent.com/oualid-ben/data/main/clean_data_fraud.csv', on_bad_lines='skip')
+df = insurance.copy()
+X = df.drop('fraud_reported', axis=1)
+Y = df['fraud_reported']
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25)
+dtc = DecisionTreeClassifier()
+dtc.fit(X_train, y_train)
 
-# Reads in saved classification model
-load_clf = pickle.load(open('insurance_tree.pkl', 'rb'))
-
-# Apply model to make predictions
-prediction = load_clf.predict(df)
-prediction_proba = load_clf.predict_proba(df)
+if input_df['model'].iat[0]=='KNN':    
+    # Reads in saved classification model
+    load_clf = pickle.load(open('insurance.pkl', 'rb'))
+    # Apply model to make predictions
+    prediction = load_clf.predict(df)
+    prediction_proba = load_clf.predict_proba(df)
+else:
+    prediction=dtc.predict(df)
+    prediction_proba= dtc.predict_proba(df)
 
 
 st.subheader('Prediction')
