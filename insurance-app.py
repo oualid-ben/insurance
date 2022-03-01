@@ -76,7 +76,7 @@ else:
 
 # Reads in saved classification model
 # Reads in saved classification model
-load_clf = pickle.load(open('insurance_tree.pkl', 'rb'))
+load_clf = pickle.load(open('insurance.pkl', 'rb'))
 
 # Apply model to make predictions
 prediction = load_clf.predict(df)
