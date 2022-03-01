@@ -27,6 +27,7 @@ if uploaded_file is not None:
 else:
     def user_input_features():
         model  = st.sidebar.selectbox('Model',('KNN', 'Random Forest'))
+        #number_of_vehicles_involved = st.number_input('number of vehicles involved', 1,3,2)
         number_of_vehicles_involved = st.sidebar.slider('number of vehicles involved', 1,3,2)
         witnesses = st.sidebar.slider('Witnesses', 0,3,1)
         data = {'model': model,
