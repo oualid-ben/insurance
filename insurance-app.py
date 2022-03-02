@@ -28,17 +28,17 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
     def user_input_features():
-        model  = st.sidebar.selectbox('Model',('KNN', 'Logistic regression','Tree'))
-        policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1442.99)
+        model  = st.sidebar.selectbox('Model',('KNN', 'Logistic regression','Decision Tree'))
+        policy_annual_premium  = st.sidebar.number_input('policy annual premium ', 433.33, 2047.59, 1406.91)
         
-        umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000, 0)
-        capital_gains  = st.sidebar.number_input('capital gains ', 0, 100500, 0)
+        umbrella_limit  = st.sidebar.number_input('umbrella limit ', -1000000, 10000000,0)
+        capital_gains  = st.sidebar.number_input('capital gains ', 0, 100500, 53300)
         capital_loss  = st.sidebar.number_input('capital loss ', -111100, 0, 0)
-        incident_severity  = st.sidebar.number_input('incident severity ', 0, 3, 2)
-        incident_hour_of_the_day  = st.sidebar.number_input('incident hour of the day ', 0, 23, 21)
+        incident_severity  = st.sidebar.number_input('incident severity ', 0, 3, 1)
+        incident_hour_of_the_day  = st.sidebar.number_input('incident hour of the day ', 0, 23, 5)
         number_of_vehicles_involved  = st.sidebar.number_input('number of vehicles involved ', 1,4,1)
         bodily_injuries  = st.sidebar.number_input('bodily injuries ', 0, 2, 1)
-        property_claim  = st.sidebar.number_input('property claim ', 0, 23670, 2770)
+        property_claim  = st.sidebar.number_input('property claim ', 0, 23670, 13020)
 
         data = {'model': model,
                 'policy_annual_premium': policy_annual_premium,
@@ -76,8 +76,8 @@ else:
 if input_df['model'].iat[0]=='KNN':    
     # Reads in saved classification model
     load_clf = pickle.load(open('insurance.pkl', 'rb'))
-elif input_df['model'].iat[0]=='Tree':
-    load_clf = pickle.load(open('insurance_tree_1.pkl', 'rb'))
+elif input_df['model'].iat[0]=='Decision Tree':
+    load_clf = pickle.load(open('insurance_tree.pkl', 'rb'))
 else:
     load_clf = pickle.load(open('insurance_log.pkl', 'rb'))
 
@@ -87,8 +87,8 @@ prediction = load_clf.predict(df)
 prediction_proba = load_clf.predict_proba(df)
 
 st.subheader('Prediction')
-insurance_species = np.array(['No fraud','Yes, fraud'])
+insurance_species = np.array(['No, it is not a fraud','Yes, it is a fraud'])
 st.write(insurance_species[prediction.item(0)])
 
-st.subheader('Prediction Probability')
+st.subheader('Prediction Probability: 0 being "no fraud" and 1 "being Fraud" ')
 st.write(prediction_proba)
