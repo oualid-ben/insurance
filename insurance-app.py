@@ -90,5 +90,11 @@ st.subheader('Prediction')
 insurance_species = np.array(['No, it is not a fraud','Yes, it is a fraud'])
 st.write(insurance_species[prediction.item(0)])
 
+
+if prediction.item(0) == 0:
+    st.markdown("![No fraud](https://media1.giphy.com/media/yCAoGdVUCW5LW/giphy.gif?cid=790b7611f456d3228227747fae5da2c3aec4317fc823f557&rid=giphy.gif&ct=g)")
+else:
+    st.markdown("![Fraud](https://media1.giphy.com/media/130o0AYCKPZ1ZK/giphy.gif?cid=790b7611e801cefa997ac91a5d4d772a4dd173fe49d83951&rid=giphy.gif&ct=g)")
+
 st.subheader('Prediction Probability: 0 being "no fraud" and 1 "being Fraud" ')
 st.write(prediction_proba)
