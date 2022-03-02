@@ -6,7 +6,6 @@ import pickle
 st.write("""
 # Insurance fraud detection: IMAFA
 
-CEO: Gertaldi Negre Aayar Espicier
 
 This app predicts if a claim is a fraud or not !
 
