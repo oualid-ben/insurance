@@ -9,7 +9,7 @@ st.write("""
 
 This app predicts if a claim is a fraud or not !
 
-[Notebook](https://colab.research.google.com/drive/1w2xC6w6CkbCVCrsTrxsHQffDtwLzGWkS)
+[Notebook](https://colab.research.google.com/drive/1xB35jEozrwzML0xa-I1WW6rVgYU0eGNG?usp=sharing)
 
 
 Dataset used: [ins_cl_dataset](https://github.com/oualid-ben/data/blob/main/ins_cl_dataset.csv).
